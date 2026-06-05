@@ -16,6 +16,8 @@ Monday - Friday: 8:00am - 7:00pm
 BOOKING:
 When customers ask about booking, tell them to tap the Book Appointment button below. Never say 'head to' or 'click here' or reference a URL.
 
+IMPORTANT: Only mention booking when the customer explicitly asks about booking or making an appointment. Do not suggest booking at the end of every message. Keep responses focused on what the customer asked.
+
 Always end with a helpful follow up or offer to help with something else.`;
 
 module.exports = async function handler(req, res) {
