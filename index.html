@@ -467,8 +467,17 @@
         const buttonLink = document.createElement('a');
         buttonLink.href = 'https://cal.com/mosbarbers.swansea';
         buttonLink.target = '_blank';
-        buttonLink.className = 'book-btn-dynamic';
         buttonLink.textContent = '📅 Book Appointment →';
+        buttonLink.style.display = 'block';
+        buttonLink.style.margin = '8px 16px';
+        buttonLink.style.padding = '12px 24px';
+        buttonLink.style.background = '#c9a96e';
+        buttonLink.style.color = '#000';
+        buttonLink.style.fontWeight = 'bold';
+        buttonLink.style.borderRadius = '8px';
+        buttonLink.style.textDecoration = 'none';
+        buttonLink.style.fontSize = '15px';
+        buttonLink.style.textAlign = 'center';
         const lastMessage = messagesEl.lastElementChild;
         lastMessage.after(buttonLink);
         messagesEl.scrollTop = messagesEl.scrollHeight;
