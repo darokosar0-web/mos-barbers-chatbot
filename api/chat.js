@@ -14,7 +14,7 @@ OPENING HOURS:
 Monday - Friday: 8:00am - 7:00pm
 
 BOOKING:
-Send customers to: https://cal.com/mosbarbers.swansea/mos-barbers-high-street
+Send customers to: https://cal.com/mosbarbers.swansea
 
 Always end with a helpful follow up or offer to help with something else.`;
 
