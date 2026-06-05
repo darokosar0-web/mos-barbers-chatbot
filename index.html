@@ -275,26 +275,22 @@
       text-align: center;
     }
 
-    /* ── Sticky Book Button ── */
-    .sticky-book-btn {
-      display: block;
-      width: calc(100% - 32px);
-      margin: 12px 16px;
-      padding: 14px 20px;
+    /* ── Dynamic Book Button ── */
+    .book-btn-dynamic {
+      display: inline-block;
+      margin: 8px 0 8px 16px;
+      padding: 12px 24px;
       background: #c9a96e;
       color: #000;
       font-weight: bold;
       border-radius: 8px;
       text-decoration: none;
-      text-align: center;
       font-size: 15px;
-      border: none;
-      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(201, 169, 110, 0.3);
       transition: background 0.2s ease;
-      flex-shrink: 0;
     }
 
-    .sticky-book-btn:hover {
+    .book-btn-dynamic:hover {
       background: #b8985d;
     }
   </style>
@@ -314,7 +310,6 @@
       <p>Swansea · AI Assistant</p>
     </div>
     <div class="status-dot" title="Online"></div>
-    <a href="https://cal.com/mosbarbers.swansea" target="_blank" class="sticky-book-btn">📅 Book Appointment</a>
   </header>
 
   <div id="messages">
@@ -462,6 +457,21 @@
 
       appendMessage('bot', linkify(reply));
       history.push({ role: 'assistant', content: reply });
+
+      // Check if reply contains booking-related keywords and inject button
+      const bookingKeywords = ['book', 'appointment', 'cal.com', 'schedule', 'booking'];
+      const replyLower = reply.toLowerCase();
+      const hasBookingKeyword = bookingKeywords.some(keyword => replyLower.includes(keyword));
+
+      if (hasBookingKeyword) {
+        const buttonLink = document.createElement('a');
+        buttonLink.href = 'https://cal.com/mosbarbers.swansea';
+        buttonLink.target = '_blank';
+        buttonLink.className = 'book-btn-dynamic';
+        buttonLink.textContent = '📅 Book Appointment →';
+        messagesEl.appendChild(buttonLink);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
     } catch {
       typingEl.remove();
       showError('Network error — check your connection and try again.');
