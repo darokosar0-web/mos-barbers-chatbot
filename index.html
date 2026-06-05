@@ -469,7 +469,8 @@
         buttonLink.target = '_blank';
         buttonLink.className = 'book-btn-dynamic';
         buttonLink.textContent = '📅 Book Appointment →';
-        messagesEl.appendChild(buttonLink);
+        const lastMessage = messagesEl.lastElementChild;
+        lastMessage.after(buttonLink);
         messagesEl.scrollTop = messagesEl.scrollHeight;
       }
     } catch {
