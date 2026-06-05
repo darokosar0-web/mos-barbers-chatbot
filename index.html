@@ -352,7 +352,9 @@
   }
 
   function linkify(text) {
-    return text.replace(/(https?:\/\/[^\s]+|cal\.com\/[^\s]+)/g, '<a href="https://$1" target="_blank" style="color: #c9a96e; text-decoration: underline;">$1</a>');
+    text = text.replace(/\*\*(https?:\/\/[^\s*]+)\*\*/g, '$1');
+    text = text.replace(/\*\*([^\*]+)\*\*/g, '$1');
+    return text.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color: #c9a96e; text-decoration: underline;">$1</a>');
   }
 
   function appendMessage(role, text) {
