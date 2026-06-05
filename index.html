@@ -351,13 +351,21 @@
     return new Date().toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' });
   }
 
+  function linkify(text) {
+    return text.replace(/(https?:\/\/[^\s]+|cal\.com\/[^\s]+)/g, '<a href="https://$1" target="_blank" style="color: #c9a96e; text-decoration: underline;">$1</a>');
+  }
+
   function appendMessage(role, text) {
     const wrap = document.createElement('div');
     wrap.className = `msg ${role}`;
 
     const bubble = document.createElement('div');
     bubble.className = 'bubble';
-    bubble.textContent = text;
+    if (role === 'bot') {
+      bubble.innerHTML = text;
+    } else {
+      bubble.textContent = text;
+    }
 
     const time = document.createElement('span');
     time.className = 'msg-time';
@@ -399,7 +407,7 @@
     const typingEl = showTyping();
 
     try {
-      const res = await fetch('/.netlify/functions/chat', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ messages: history }),
@@ -421,7 +429,7 @@
         return;
       }
 
-      appendMessage('bot', reply);
+      appendMessage('bot', linkify(reply));
       history.push({ role: 'assistant', content: reply });
     } catch {
       typingEl.remove();
