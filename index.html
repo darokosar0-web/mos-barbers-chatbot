@@ -353,8 +353,8 @@
   }
 
   function linkify(text) {
-    text = text.replace(/\*\*(https?:\/\/[^\s*]+)\*\*/g, '$1');
     text = text.replace(/\*\*([^\*]+)\*\*/g, '$1');
+    text = text.replace(/https?:\/\/cal\.com\/[^\s<]+/g, '');
     return text.replace(/(https?:\/\/[^\s<]+)/g, '<a href="$1" target="_blank" style="color: #c9a96e; text-decoration: underline;">$1</a>');
   }
 
@@ -440,7 +440,7 @@
         calEmbedShown = true;
         const buttonDiv = document.createElement('div');
         buttonDiv.style.marginTop = '10px';
-        buttonDiv.innerHTML = `<a href="https://cal.com/mosbarbers.swansea" target="_blank" style="display: inline-block; margin-top: 10px; padding: 12px 24px; background: #c9a96e; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; font-size: 14px;">📅 Book Appointment</a>`;
+        buttonDiv.innerHTML = `<a href="https://cal.com/mosbarbers.swansea" target="_blank" style="display: inline-block; margin-top: 12px; padding: 14px 28px; background: #c9a96e; color: #000; font-weight: bold; border-radius: 8px; text-decoration: none; font-size: 15px; box-shadow: 0 4px 12px rgba(201,169,110,0.4); border: 2px solid #a07840; cursor: pointer;">📅 Book Appointment →</a>`;
         messagesEl.appendChild(buttonDiv);
         messagesEl.scrollTop = messagesEl.scrollHeight;
       }
