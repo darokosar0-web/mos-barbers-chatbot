@@ -328,6 +328,7 @@
   const errorToast = document.getElementById('errorToast');
 
   const history = []; // { role, content }
+  let calEmbedShown = false; // Track if Cal.com embed has been shown
 
   // Auto-grow textarea
   inputEl.addEventListener('input', () => {
@@ -433,6 +434,22 @@
 
       appendMessage('bot', linkify(reply));
       history.push({ role: 'assistant', content: reply });
+
+      // Show Cal.com embed if reply contains cal.com and hasn't been shown yet
+      if (!calEmbedShown && reply.toLowerCase().includes('cal.com')) {
+        calEmbedShown = true;
+        const embedDiv = document.createElement('div');
+        embedDiv.id = 'cal-embed';
+        embedDiv.style.marginTop = '10px';
+        embedDiv.innerHTML = `<iframe src="https://cal.com/mosbarbers.swansea?embed=true"
+          width="100%"
+          height="500px"
+          frameborder="0"
+          style="border-radius: 12px;">
+        </iframe>`;
+        messagesEl.appendChild(embedDiv);
+        messagesEl.scrollTop = messagesEl.scrollHeight;
+      }
     } catch {
       typingEl.remove();
       showError('Network error — check your connection and try again.');
