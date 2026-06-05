@@ -459,7 +459,7 @@
       history.push({ role: 'assistant', content: reply });
 
       // Check if reply contains booking-related keywords and inject button
-      const bookingKeywords = ['book', 'appointment', 'cal.com', 'schedule', 'booking'];
+      const bookingKeywords = ['book', 'appointment', 'schedule', 'booking', 'button below'];
       const replyLower = reply.toLowerCase();
       const hasBookingKeyword = bookingKeywords.some(keyword => replyLower.includes(keyword));
 

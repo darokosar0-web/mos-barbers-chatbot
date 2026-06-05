@@ -14,7 +14,7 @@ OPENING HOURS:
 Monday - Friday: 8:00am - 7:00pm
 
 BOOKING:
-Send customers to: https://cal.com/mosbarbers.swansea
+When customers ask about booking, tell them to tap the Book Appointment button below. Never say 'head to' or 'click here' or reference a URL.
 
 Always end with a helpful follow up or offer to help with something else.`;
 
